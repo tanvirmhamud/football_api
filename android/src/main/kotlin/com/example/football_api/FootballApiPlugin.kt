@@ -56,6 +56,8 @@ private  var getplayertransfer : String = "getplayertransfer";
 private  var getsingleplayerinfo : String = "getsingleplayerinfo";
 
 private  var getplayersquard : String = "getplayersquard";
+  private var getleague_fixture : String ="getleague_fixture";
+
 
    
 
@@ -220,6 +222,14 @@ private  var getplayersquard : String = "getplayersquard";
       CoroutineScope(Dispatchers.IO).async {
 
         var data = api(context).getplayersquard(player!!)
+        result.success("${data}")
+      }
+    }else if(call.method == getleague_fixture){
+      var league : Int? = call.argument<Int>("league")
+
+      var season : Int? = call.argument<Int>("season")
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).getleague_fixture(league!!, season!!)
         result.success("${data}")
       }
     }
