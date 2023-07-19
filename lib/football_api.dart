@@ -148,4 +148,11 @@ class FootballApi {
     final version = await methodChannel.invokeMethod<String>('getleague_fixture', {"season": season, "league": leagueid});
     return version;
   }
+
+
+  @override
+  Future<String?>  gettop_score({int season=2022,  int leagueid=61}) async {
+    final version = await methodChannel.invokeMethod<String>('gettopscore', {"season": season, "league": leagueid});
+    return version;
+  }
 }
