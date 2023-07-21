@@ -58,6 +58,8 @@ private  var getsingleplayerinfo : String = "getsingleplayerinfo";
 private  var getplayersquard : String = "getplayersquard";
   private var getleague_fixture : String ="getleague_fixture";
   private var gettopscore : String ="gettopscore";
+  private var gettrophy : String ="gettrophy";
+  private var gettransfer : String ="gettransfer";
 
 
    
@@ -237,6 +239,19 @@ private  var getplayersquard : String = "getplayersquard";
       var season : Int? = call.argument<Int>("season")
       CoroutineScope(Dispatchers.IO).async {
         var data = api(context).gettop_score(league!!, season!!)
+        result.success("${data}")
+      }
+    }else if(call.method == gettrophy){
+      var player : Int? = call.argument<Int>("player")
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).gettrophy(player!!)
+        result.success("${data}")
+      }
+    }
+    else if(call.method == gettransfer){
+      var player : Int? = call.argument<Int>("player")
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).gettransfer(player!!)
         result.success("${data}")
       }
     }

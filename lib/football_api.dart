@@ -155,4 +155,14 @@ class FootballApi {
     final version = await methodChannel.invokeMethod<String>('gettopscore', {"season": season, "league": leagueid});
     return version;
   }
+  @override
+  Future<String?>  gettransfer({int player=35845}) async {
+    final version = await methodChannel.invokeMethod<String>('gettransfer', {"player": player});
+    return version;
+  }
+  @override
+  Future<String?>  gettrophy({int player=35845}) async {
+    final version = await methodChannel.invokeMethod<String>('gettrophy', {"player": player});
+    return version;
+  }
 }
