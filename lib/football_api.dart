@@ -165,4 +165,22 @@ class FootballApi {
     final version = await methodChannel.invokeMethod<String>('gettrophy', {"player": player});
     return version;
   }
+
+  @override
+  Future<String?> gettopleague() async {
+    final version = await methodChannel.invokeMethod<String>('gettopleague');
+    return version;
+  }
+
+  @override
+  Future<String?> getpoll({int fixtureid = 36584}) async {
+    final version = await methodChannel.invokeMethod<String>('poll', {"fixtureid": fixtureid});
+    return version;
+  }
+
+  @override
+  Future<String?> updatepoll({int fixtureid = 36584, int home = 25, int away = 56,String homename = "sdsdv", String awayname = "", String draw = ""}) async {
+    final version = await methodChannel.invokeMethod<String>('poll', {"fixtureid": fixtureid , "home" : home,"away" :away, "homename" :homename, "awayname" :awayname, "draw" :draw, });
+    return version;
+  }
 }

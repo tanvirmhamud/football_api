@@ -60,6 +60,9 @@ private  var getplayersquard : String = "getplayersquard";
   private var gettopscore : String ="gettopscore";
   private var gettrophy : String ="gettrophy";
   private var gettransfer : String ="gettransfer";
+  private var gettopleague : String ="gettopleague";
+  private var poll : String ="poll";
+  private var pollupdate : String ="pollupdate";
 
 
    
@@ -252,6 +255,28 @@ private  var getplayersquard : String = "getplayersquard";
       var player : Int? = call.argument<Int>("player")
       CoroutineScope(Dispatchers.IO).async {
         var data = api(context).gettransfer(player!!)
+        result.success("${data}")
+      }
+    }else if(call.method == gettopleague) {
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).gettopleague()
+        result.success("${data}")
+      }
+    }else if(call.method == poll) {
+      var fixture : Int? = call.argument<Int>("fixtureid")
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).getpoll(fixture!!)
+        result.success("${data}")
+      }
+    }else if(call.method == pollupdate) {
+      var fixture : Int? = call.argument<Int>("fixtureid")
+      var home : Int? = call.argument<Int>("home")
+      var away : Int? = call.argument<Int>("away")
+      var homename : String? = call.argument<String>("homename")
+      var awayname : String? = call.argument<String>("awayname")
+      var draw : Int? = call.argument<Int>("draw")
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).pollupdate(fixture!!,home!!,away!!,homename!!,awayname!!,draw!!)
         result.success("${data}")
       }
     }
