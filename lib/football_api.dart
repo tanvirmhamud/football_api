@@ -179,7 +179,7 @@ class FootballApi {
   }
 
   @override
-  Future<String?> updatepoll({int fixtureid = 36584, int home = 25, int away = 56,String homename = "sdsdv", String awayname = "", String draw = ""}) async {
+  Future<String?> updatepoll({int fixtureid = 36584, int home = 25, int away = 56,String homename = "sdsdv", String awayname = "", int draw = 5}) async {
     final version = await methodChannel.invokeMethod<String>('poll', {"fixtureid": fixtureid , "home" : home,"away" :away, "homename" :homename, "awayname" :awayname, "draw" :draw, });
     return version;
   }
