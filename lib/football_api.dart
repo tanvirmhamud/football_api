@@ -188,5 +188,10 @@ class FootballApi {
     final version = await methodChannel.invokeMethod<String>('allleaguebyteam', {"teamid": teamid});
     return version;
   }
+  @override
+  Future<String?> getsingleleague({int leagueid = 33}) async {
+    final version = await methodChannel.invokeMethod<String>('singleleague', {"leagueid": leagueid});
+    return version;
+  }
 
 }
