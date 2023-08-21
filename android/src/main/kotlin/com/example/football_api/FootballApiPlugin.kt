@@ -63,6 +63,7 @@ private  var getplayersquard : String = "getplayersquard";
   private var gettopleague : String ="gettopleague";
   private var poll : String ="poll";
   private var pollupdate : String ="pollupdate";
+  private var allleaguebyteam : String ="allleaguebyteam";
 
 
    
@@ -262,7 +263,14 @@ private  var getplayersquard : String = "getplayersquard";
         var data = api(context).gettopleague()
         result.success("${data}")
       }
-    }else if(call.method == poll) {
+    } else if(call.method == allleaguebyteam) {
+      var teamid : Int? = call.argument<Int>("teamid")
+      CoroutineScope(Dispatchers.IO).async {
+        var data = api(context).allleaguebyteam(teamid!!)
+        result.success("${data}")
+      }
+    }
+    else if(call.method == poll) {
       var fixture : Int? = call.argument<Int>("fixtureid")
       CoroutineScope(Dispatchers.IO).async {
         var data = api(context).getpoll(fixture!!)
